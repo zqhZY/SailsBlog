@@ -54,7 +54,7 @@
                          <span class="input-group-addon">
                              <span class="glyphicon glyphicon-pencil"></span>
                          </span>
-                        <input type="password" class="form-control input-lg" name="password" ng-model="passwd"
+                        <input type="password" class="form-control input-lg" name="password" ng-model="password"
                                placeholder="enter password here" required>
                     </p>
                     <span style="color: red" ng-show="registerForm.passwd.$dirty && registerForm.passwd.$invalid">
@@ -66,7 +66,7 @@
                     <p class="">
                         <button type="submit" class="btn btn-success btn-lg bt-sign"
                         ng-disabled="registerForm.username.$invalid || registerForm.email.$invalid ||
-                            registerForm.passwd.$invalid">
+                            registerForm.password.$invalid">
                             Create a account
                         </button>
                     </p>

@@ -36,34 +36,16 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  // '/register': {
-  //   view: 'users/register'
-  // },
-
-  // '/login': {
-  //   view: 'users/login'
-  // },
-
-
-  'get /login': {
-    view: 'login'
-  },
-
-  'post /login': 'UserController.login',
-
-  '/logout': 'UserController.logout',
-
-  'get /signup': {
-    view: 'signup'
-  },
-
-
-
 
   //login and register
   'post /register': 'UserController.register',
   'get /register': {view: 'users/register'},
   // 'post /login': 'UserController.login',
+
+  'get /login': {view: 'users/login'},
+  'post /login': 'UserController.login',
+  '/logout': 'UserController.logout',
+  
 
   'post /persons': 'PersonsController.create',
   'get /persons': 'PersonsController.index',
