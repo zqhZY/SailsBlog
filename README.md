@@ -1,15 +1,15 @@
 # SailsBlog
-###this is a blog with sails+mongo+angularjs######
-##m#ogodb is unzip and located in ~ directory###### 
+######this is a blog with sails+mongo+angularjs
+######mogodb is unzip and located in ~ directory
 
-###start app######
+######start app
 
     npm insatll
-###add .bowerrc file to config the directory of bower_components######
+######add .bowerrc file to config the directory of bower_components
 
-###run commend######
+######run commend
 
     bower insatll  
-###run app by######
+######run app by
 
     ./start.sh
