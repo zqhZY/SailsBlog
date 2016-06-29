@@ -1,0 +1,84 @@
+<div class="body-sign" >
+    <!--login body-->
+
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6 col-md-offset-3 text-center login-header"  >
+                <h1>Register Account</h1>
+            </div>
+            <div class="col-md-6 col-md-offset-3 panel-default " >
+
+                <form method="post" ng-app="inputInvalid" action="/register" ng-controller="validateCtrl" name="registerForm" novalidate>
+                    <p class="login-text">
+                        Username
+                    </p>
+                    <p class="input-group">
+                         <span class="input-group-addon">
+                             <span class="glyphicon glyphicon-user"></span>
+                         </span>
+                        <input type="text" class="form-control input-lg " name="username" ng-model="username"
+                               placeholder="enter nickname here" required>
+                    </p>
+                    <span style="color: red" ng-show="registerForm.username.$dirty && registerForm.username.$invalid">
+                            <span ng-show="registerForm.username.$error.required">
+                                Username must not empty!
+                            </span>
+                    </span>
+
+                    <p class="login-text">
+                        Email
+                    </p>
+                    <p class="input-group">
+                         <span class="input-group-addon">
+                             <span class="glyphicon glyphicon-envelope"></span>
+                         </span>
+                        <input type="email" class="form-control input-lg " name="email" ng-model="email"
+                               placeholder="enter your email here" required>
+                    </p>
+
+                    <span style="color:red" ng-show="registerForm.email.$dirty && registerForm.email.$invalid">
+                        <span ng-show="registerForm.email.$error.required">
+                            Email must not empty!
+                        </span>
+                        <span ng-show="registerForm.email.$error.email">
+                            Invalid email!
+                        </span>
+                    </span>
+
+                    <p class="login-text">
+                        Password
+                    </p>
+                    <p class="input-group">
+                         <span class="input-group-addon">
+                             <span class="glyphicon glyphicon-pencil"></span>
+                         </span>
+                        <input type="password" class="form-control input-lg" name="password" ng-model="passwd"
+                               placeholder="enter password here" required>
+                    </p>
+                    <span style="color: red" ng-show="registerForm.passwd.$dirty && registerForm.passwd.$invalid">
+                            <span ng-show="registerForm.passwd.$error.required">
+                                Password must not empty!
+                            </span>
+                    </span>
+
+                    <p class="">
+                        <button type="submit" class="btn btn-success btn-lg bt-sign"
+                        ng-disabled="registerForm.username.$invalid || registerForm.email.$invalid ||
+                            registerForm.passwd.$invalid">
+                            Create a account
+                        </button>
+                    </p>
+                </form>
+            </div>
+
+            <div class="col-md-6 col-md-offset-3"  >
+                <p class="help-block">
+                    If you click the button above,you will create a admin account for yourself.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--login body end-->
+</div>

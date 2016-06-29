@@ -1,0 +1,42 @@
+.body-sign {
+    height:100% ;
+    width:100%;
+    position:absolute;
+    background-color: rgb(249, 249, 249);
+    /*background: url("assets/images/back.jpg") no-repeat center center fixed;*/
+    padding-top: 30px;
+
+}
+.margin-base-vertical {
+    margin: 40px 0;
+}
+
+.panel {
+    background-color: rgb(255, 255, 255);
+    /*width: 340px;*/
+}
+
+.login-header {
+    margin-bottom: 25px;
+}
+
+.logo {
+    height: 60px;
+    width: 60px;
+}
+
+.login-text {
+
+    margin-top: 20px;
+    /*margin-bottom: 15px;*/
+}
+
+.bt-sign {
+
+    margin-top: 12px;
+}
+
+.input-sign {
+
+    width: 20px;
+}

@@ -1,0 +1,65 @@
+<!-- Login modal -->
+<div class="body-sign">
+    <!--login body-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center"  >
+                <img class="img-circle logo" src="images/logo.jpg">
+            </div>
+            <div class="col-md-6 col-md-offset-3 text-center login-header"  >
+                <h1>Sign in</h1>
+            </div>
+            <div class="col-md-6 col-md-offset-3 panel panel-default " >
+                <form method="post"  action="/login"  ng-app="inputInvalid" ng-controller="validateCtrl"
+                      name="loginForm" novalidate>
+                    <p class="login-text">
+                        Username or email address
+                    </p>
+                    <p class="input-group">
+                         <span class="input-group-addon">
+                             <span class="glyphicon glyphicon-envelope"></span>
+                         </span>
+                        <input type="text" class="form-control input-lg " name="username" ng-model="username"
+                               placeholder="enter name or email" required>
+                    </p>
+                    <span style="color: red" ng-show="loginForm.username.$dirty && loginForm.username.$invalid">
+                            <span ng-show="loginForm.username.$error.required">
+                                Must not empty!
+                            </span>
+                    </span>
+
+
+                    <p class="login-text">
+                        Password
+                    </p>
+                    <p class="input-group">
+                         <span class="input-group-addon">
+                             <span class="glyphicon glyphicon-pencil"></span>
+                         </span>
+                        <input type="password" class="form-control input-lg" name="passwd" ng-model="passwd"
+                               placeholder="enter password here" required>
+                    </p>
+                    <span style="color: red" ng-show="loginForm.passwd.$dirty && loginForm.passwd.$invalid">
+                            <span ng-show="loginForm.passwd.$error.required">
+                                Must not empty!
+                            </span>
+                    </span>
+
+                    <p class="text-center">
+                        <button type="submit"
+                                ng-disabled="loginForm.username.$invalid || loginForm.passwd.$invalid" class="btn btn-success btn-lg bt-sign" >
+                            Sign in
+                        </button>
+                    </p>
+                </form>
+            </div>
+
+            <div class="col-md-6 col-md-offset-3 text-center"  >
+                <p class="help-block text-center">
+                    New to here? <a href="/register">Create an account</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--login body end-->
+</div>

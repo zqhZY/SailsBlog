@@ -1,0 +1,24 @@
+{
+  "name": "demoApp",
+  "description": "a Sails application",
+  "main": "app.js",
+  "authors": [
+    "zqh"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/zqhZY/Sailsjs-MongoDB",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "bootstrap": "^3.3.6",
+    "requirejs": "^2.2.0",
+    "angular": "^1.5.7"
+  }
+}
