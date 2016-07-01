@@ -29,7 +29,7 @@ module.exports = {
             if(err)
                 res.send(err);
             else
-                res.json({"regiester": "success"});
+                res.json({"result": "success"});
         })
     },
 
@@ -37,7 +37,6 @@ module.exports = {
 
 
     login: function(req, res) {
-
         passport.authenticate('local', function(err, user, info) {
             if ((err) || (!user)) {
                 return res.send({

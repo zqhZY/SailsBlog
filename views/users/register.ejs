@@ -2,15 +2,19 @@
     <!--login body-->
 
 
-    <div class="container">
+    <div class="container" ng-app="inputInvalid"  ng-controller="validateCtrl">
         <div class="row">
 
             <div class="col-md-6 col-md-offset-3 text-center login-header"  >
                 <h1>Register Account</h1>
             </div>
+            <div class="col-md-6 col-md-offset-3 alert alert-danger alert-dismissible" ng-show="invalid_account">
+                <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+                <strong>Note:</strong> Email has been existed, please try another one again.
+            </div>
             <div class="col-md-6 col-md-offset-3 panel-default " >
 
-                <form method="post" ng-app="inputInvalid" action="/register" ng-controller="validateCtrl" name="registerForm" novalidate>
+                <form method="post" ng-submit="registerCheck()"  name="registerForm" novalidate>
                     <p class="login-text">
                         Username
                     </p>
@@ -57,8 +61,8 @@
                         <input type="password" class="form-control input-lg" name="password" ng-model="password"
                                placeholder="enter password here" required>
                     </p>
-                    <span style="color: red" ng-show="registerForm.passwd.$dirty && registerForm.passwd.$invalid">
-                            <span ng-show="registerForm.passwd.$error.required">
+                    <span style="color: red" ng-show="registerForm.password.$dirty && registerForm.password.$invalid">
+                            <span ng-show="registerForm.password.$error.required">
                                 Password must not empty!
                             </span>
                     </span>
@@ -74,8 +78,12 @@
             </div>
 
             <div class="col-md-6 col-md-offset-3"  >
-                <p class="help-block">
+                <p class="help-block" ng-show="!regSuccess">
                     If you click the button above,you will create a admin account for yourself.
+                </p>
+                <p ng-show="regSuccess">
+                    Register success, <a href="/login">login now</a>.
+
                 </p>
             </div>
         </div>

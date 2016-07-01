@@ -1,7 +1,7 @@
 <!-- Login modal -->
 <div class="body-sign">
     <!--login body-->
-    <div class="container">
+    <div class="container" ng-app="inputInvalid" ng-controller="validateCtrl" >
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center"  >
                 <img class="img-circle logo" src="images/logo.jpg">
@@ -9,9 +9,16 @@
             <div class="col-md-6 col-md-offset-3 text-center login-header"  >
                 <h1>Sign in</h1>
             </div>
+            <div class="col-md-6 col-md-offset-3 alert alert-danger alert-dismissible" ng-show="invalid_email">
+                <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+                <strong>Note:</strong> User does not exist, please try another account again.
+            </div>
+            <div class="col-md-6 col-md-offset-3 alert alert-danger alert-dismissible" ng-show="invalid_passwd">
+                <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+                <strong>Note:</strong> Password error, please try again.
+            </div>
             <div class="col-md-6 col-md-offset-3 panel panel-default " >
-                <form method="post"  action="/login"  ng-app="inputInvalid" ng-controller="validateCtrl"
-                      name="loginForm" novalidate>
+                <form method="post"  ng-submit="checkAccount()" name="loginForm" novalidate>
                     <p class="login-text">
                         Username or email address
                     </p>
@@ -30,8 +37,6 @@
                                 Invalid email!
                             </span>
                     </span>
-
-
                     <p class="login-text">
                         Password
                     </p>
@@ -47,7 +52,6 @@
                                 Must not empty!
                             </span>
                     </span>
-
                     <p class="text-center">
                         <button type="submit"
                                 ng-disabled="loginForm.email.$invalid || loginForm.password.$invalid" class="btn btn-success btn-lg bt-sign" >
@@ -56,7 +60,6 @@
                     </p>
                 </form>
             </div>
-
             <div class="col-md-6 col-md-offset-3 text-center"  >
                 <p class="help-block text-center">
                     New to here? <a href="/register">Create an account</a>.

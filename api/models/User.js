@@ -19,7 +19,7 @@ module.exports = {
     },
     password: {
       type: 'string',
-      minLength: 6,
+      // minLength: 6,
       required: true
     },
     toJSON: function() {
