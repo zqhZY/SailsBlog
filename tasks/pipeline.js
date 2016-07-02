@@ -18,7 +18,8 @@ var cssFilesToInject = [
 
   //bootstrap
   'bower_components/bootstrap/dist/css/bootstrap.css',
-  'bower_components/bootstrap/dist/js/bootstrap.js',
+  'bower_components/ng-table/dist/ng-table.min.css',
+  // 'bower_components/bootstrap/dist/js/bootstrap.js',
   'styles/**/*.css'
 ];
 
@@ -27,19 +28,22 @@ var cssFilesToInject = [
 // (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
 
-  //Load angularjs
+  //Load outer
   'bower_components/angular/angular.js',
   'bower_components/jquery/dist/jquery.js',
   'bower_components/angular/angular.js',
   'bower_components/angular-route/angular-route.js',
   'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
   'bower_components/bootstrap/dist/js/boostrap.js',
-  // Load sails.io before everything else
+  // 'bower_components/at-table/dist/angular-table.js',
+  // 'bower_components/at-table/dist/angular-table.min.js',
+  'bower_components/ng-table/dist/ng-table.min.js',
+  // // Load sails.io before everything else
   'js/dependencies/sails.io.js',
 
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/**/*.js',
-
+  //'bower_components/**/*.js',
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
   'js/**/*.js'

@@ -1,0 +1,106 @@
+
+    <div class="container" ng-app="Admin" ng-controller="userCtrl">
+        <nav class="navbar navbar-default" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#admin-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="#">Example: SQLAlchemy</a>
+
+            </div>
+            <!-- navbar content -->
+            <div class="collapse navbar-collapse" id="admin-navbar-collapse">
+
+                <ul class="nav navbar-nav">
+
+                    <li class="active">
+                        <a href="/admin_home">Home</a>
+                    </li>
+                    <li>
+                        <a href="/admin_user">User</a>
+                    </li>
+                    <li>
+                        <a href="/sqla/simple/admin/tag/">Post</a>
+                    </li>
+                    <li>
+                        <a href="/sqla/simple/admin/post/">Category</a>
+                    </li>
+                    <li>
+                        <a href="/sqla/simple/admin/tree/">Tag</a>
+                    </li>
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+
+                </ul>
+            </div>
+        </nav>
+
+
+
+        <ul class="nav nav-tabs actions-nav">
+            <li class="active">
+                <a href="javascript:void(0)">List (25)</a>
+            </li>
+
+
+            <li>
+                <a href="/sqla/simple/admin/user/new/?url=%2Fsqla%2Fsimple%2Fadmin%2Fuser%2F" title="Create new record">Create</a></li>
+
+
+            <li class="dropdown">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">With selected<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+                    <li>
+                        <a href="javascript:void(0)" onclick="return modelActions.execute('delete');">Delete</a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+
+        </ul>
+
+        <table ng-table="tableParams" class="table" show-filter="true">
+            <tr ng-repeat="user in $data">
+                <td title="'Name'" filter="{ name: 'text'}" sortable="'username'">
+                    {{user.username}}</td>
+                <td title="'email'" filter="{ email: 'text'}" sortable="'email'">
+                    {{user.email}}</td>
+                <td title="'password'" filter="{ password: 'text'}" sortable="'password'">
+                    {{user.password}}</td>
+            </tr>
+        </table>
+
+
+
+        <!--<table class="table table-striped" at-table at-paginated at-list="list" at-config="config">-->
+            <!--<thead></thead>-->
+            <!--<tbody>-->
+            <!--<tr>-->
+                <!--<td at-implicit at-sortable at-attribute="index" width="150" at-initial-sorting="asc"></td>-->
+                <!--<td at-implicit at-sortable at-attribute="name"  width="250"></td>-->
+                <!--<td at-implicit at-sortable at-attribute="email"></td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+        <!--</table>-->
+
+        <!--<at-pagination at-list="list" at-config="config"></at-pagination>-->
+
+
+        <form id="action_form" action="/sqla/simple/admin/user/action/" method="POST" style="display: none">
+
+            <input id="action" name="action" type="hidden">
+        </form>
+
+
+    </div>

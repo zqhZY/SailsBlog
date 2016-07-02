@@ -58,6 +58,25 @@ module.exports = {
     logout: function(req, res) {
         req.logout();
         res.redirect('/');
+    },
+
+    list: function (req, res) {
+        var pages = {
+            page: req.body.page,
+            count: req.body.count
+        };
+
+        console.log('----------------->', pages);
+
+        User.find().exec(function (err, records) {
+            // console.log('err----------------->', err);
+            console.log('data----------------->', records);
+            if (err)
+                res.send(err);
+            else
+                res.send(records);
+
+        });
     }
 
 };

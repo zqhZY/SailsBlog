@@ -33,7 +33,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
+    view: 'admin/admin_home'
   },
 
 
@@ -45,7 +45,12 @@ module.exports.routes = {
   'get /login': {view: 'users/login'},
   'post /login': 'UserController.login',
   '/logout': 'UserController.logout',
-  
+
+
+  'get /admin_home': {view: 'admin/admin_home'},
+  'get /admin_user': {view: 'admin/admin_user'},
+  'post /users.json': 'UserController.list',
+
 
   'post /persons': 'PersonsController.create',
   'get /persons': 'PersonsController.index',
