@@ -68,14 +68,28 @@ module.exports = {
 
         console.log('----------------->', pages);
 
-        User.find().exec(function (err, records) {
+        User.find().exec(function (err, users) {
             // console.log('err----------------->', err);
-            console.log('data----------------->', records);
+            // console.log('users----------------->', users);
             if (err)
                 res.send(err);
             else
-                res.send(records);
+                res.send(users);
 
+        });
+    },
+
+    delete: function (req, res) {
+
+        var userid = req.body.userid;
+
+        console.log('------------->', userid);
+        User.destroy({id:userid}).exec(function (err){
+            if (err) {
+                return res.negotiate(err);
+            }
+            sails.log('Any users named Finn have now been deleted, if there were any.');
+            return res.ok();
         });
     }
 

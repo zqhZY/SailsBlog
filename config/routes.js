@@ -50,6 +50,7 @@ module.exports.routes = {
   'get /admin_home': {view: 'admin/admin_home'},
   'get /admin_user': {view: 'admin/admin_user'},
   'post /users.json': 'UserController.list',
+  'post /delete.json': 'UserController.delete',
 
 
   'post /persons': 'PersonsController.create',
