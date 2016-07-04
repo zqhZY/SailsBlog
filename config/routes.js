@@ -52,6 +52,13 @@ module.exports.routes = {
   'post /users.json': 'UserController.list',
   'post /delete.json': 'UserController.delete',
 
+  'get /admin_tags': {view: 'admin/admin_tag'},
+  'get /tag_create': {view: 'admin/tag_new'},
+  'post /tag_create': 'TagsController.create',
+  'post /tags.json': 'TagsController.list',
+  'post /delete_tag.json': 'TagsController.delete',
+
+
 
   'post /persons': 'PersonsController.create',
   'get /persons': 'PersonsController.index',
