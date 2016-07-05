@@ -1,7 +1,7 @@
 var accountModule = angular.module('inputInvalid', []);
 
 /**login Service**/
-accountModule.service('accountService', ['$http', function ($http) {
+accountModule.service('accountService', ['$http','$q', function ($http, $q) {
 
     _login = function (account) {
         _loginPromise =
