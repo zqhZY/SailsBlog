@@ -29,9 +29,9 @@ module.exports.policies = {
   '*': true,
 
   //add auth to /post
-  'PostController': {
-    '*': 'isAuthenticated'
-  },
+  // 'PostController': {
+  //   '*': 'isAuthenticated'
+  // },
 
   // '*': true,
 
