@@ -176,13 +176,19 @@
 
                 <td class="list-buttons-column">
 
-                    <a class="icon" href="/sqla/simple/admin/tag/edit/?url=%2Fsqla%2Fsimple%2Fadmin%2Ftag%2F&amp;id=1" title="Edit record">
-                        <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
-                    </a>
 
-                    <form class="icon" method="POST" ng-submit="deleteTag(post.id)">
-                        <input id="id" name="id" value="1" type="hidden">
-                        <input id="url" name="url" value="/sqla/simple/admin/tag/" type="hidden">
+                    <form class="icon" method="POST" action="/update_view.json">
+                        <input id="id" name="postid" value="{{post.id}}" type="hidden">
+                        <!--<input id="url" name="url" value="/sqla/simple/admin/tag/" type="hidden">-->
+
+                        <button type="submit">
+                            <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </form>
+
+
+                    <form class="icon" method="POST" action="/delete_post.json">
+                        <input id="id" name="postid" value="{{post.id}}" type="hidden">
 
                         <button onclick="return confirm('Are you sure you want to delete this record?');" title="Delete record">
                             <span class="fa fa-trash glyphicon glyphicon-trash"></span>
@@ -205,76 +211,6 @@
 
         </tbody>
     </table>
-
-
-
-    <ul class="pagination">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <li class="disabled">
-            <a href="javascript:void(0)">«</a>
-        </li>
-
-
-        <li class="disabled">
-            <a href="javascript:void(0)">&lt;</a>
-        </li>
-
-
-
-
-        <li class="active">
-            <a href="javascript:void(0)">1</a>
-        </li>
-
-
-
-        <li>
-            <a href="/sqla/simple/admin/post/?page=1">2</a>
-        </li>
-
-
-
-
-        <li>
-            <a href="/sqla/simple/admin/post/?page=1">&gt;</a>
-        </li>
-
-
-        <li class="disabled">
-            <a href="javascript:void(0)">»</a>
-        </li>
-
-    </ul>
-
-
-
-
-
-
-
-
-    <form id="action_form" action="/sqla/simple/admin/post/action/" method="POST" style="display: none">
-
-        <input id="action" name="action" type="hidden">
-    </form>
-
 
 
 </div>

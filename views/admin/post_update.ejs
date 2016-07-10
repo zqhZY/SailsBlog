@@ -71,18 +71,21 @@
     </ul>
 
 
-    <form action="/post_create" method="POST" role="form" class="admin-form form-horizontal" enctype="multipart/form-data">
+    <form action="/update_post.json" method="POST" role="form" class="admin-form form-horizontal" enctype="multipart/form-data">
+
 
 
         <hr>
 
+        <% _.each(updatepost, function (post) { %>
+        <input name="postid" value="<%= post.id %>" type="hidden">
 
         <div class="form-group">
             <label for="name" class="col-md-2 control-label">Title
                 &nbsp;
             </label>
             <div class="col-md-10">
-                <input class="form-control" id="name" name="title" type="text" >
+                <input class="form-control" id="name" name="title" type="text" value="<%= post.title %>">
 
             </div>
 
@@ -94,7 +97,7 @@
             </label>
             <div class="col-md-10">
 
-                <input class="form-control" id="name" name="author" type="text" >
+                <input class="form-control" id="name" name="author" type="text" value="<%= post.author %>">
 
             </div>
 
@@ -107,7 +110,7 @@
             </label>
             <div class="col-md-10">
 
-                <input class="form-control" id="title" name="imagePath" type="text" >
+                <input class="form-control" id="title" name="imagePath" type="text" value="<%= post.imagePath %>">
 
 
             </div>
@@ -123,6 +126,7 @@
             <div class="col-md-10">
 
                 <textarea class="form-control" id="text" name="detail" >
+                    <%= post.detail %>
                 </textarea>
 
 
@@ -139,6 +143,7 @@
             <div class="col-md-10">
 
                 <textarea class="form-control" id="text" name="Content">
+                    <%= post.Content %>
                 </textarea>
 
 
@@ -154,12 +159,15 @@
             <div class="col-md-10">
 
                 <input class="form-control" data-date-format="YYYY-MM-DD HH:mm:ss"
-                       data-role="datetimepicker" id="date" name="createtime" type="text">
+                       data-role="datetimepicker" id="date" name="createtime" type="text" value="<%= post.createtime %>">
 
 
             </div>
 
         </div>
+
+        <% }) %>
+
 
 
         <hr>

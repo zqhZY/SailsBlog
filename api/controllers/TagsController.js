@@ -45,13 +45,13 @@ module.exports = {
 
         var tagid = req.body.tagid;
 
-        console.log('tags------------->', tagid);
+        console.log('tagsid------------->', tagid);
         Tags.destroy({id:tagid}).exec(function (err){
             if (err) {
                 return res.negotiate(err);
             }
             sails.log('Any tag named Finn have now been deleted, if there were any.');
-            return res.ok();
+            res.redirect('/admin_tags');
         });
     }
 	

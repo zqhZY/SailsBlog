@@ -78,6 +78,8 @@ module.exports.routes = {
   'post /post_create': 'PostController.create',
   'post /posts.json': 'PostController.list',
   'post /delete_post.json': 'PostController.delete',
+  'post  /update_post.json': 'PostController.update',
+  'post /update_view.json': 'PostController.updateview',
 
   
   
