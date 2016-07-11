@@ -5,6 +5,8 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var markdown = require('markdown-js');
+
 module.exports = {
 
     index: function (req, res) {
@@ -16,12 +18,15 @@ module.exports = {
     },
     
     create: function (req, res) {
+
+        var content_md = markdown.makeHtml(req.body.Content);
+        // res.send(content_md);
         var post = {
             "title": req.body.title,
             "author": req.body.author,
             "imagePath": req.body.imagePath,
             "detail": req.body.detail,
-            "Content": req.body.Content,
+            "Content": content_md,
             "createtime": req.body.createtime
         };
 
