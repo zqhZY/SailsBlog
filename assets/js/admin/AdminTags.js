@@ -25,27 +25,28 @@ Tags.service('tagService', ['$http','$q', function ($http, $q) {
                 });
         return _getDataPromise;
     }
-
-    _deleteTag = function (id) {
-        var message = {
-            tagid: id
-        };
-        _deleteTagPromise =
-            $http.post('/delete_tag.json', message).then(function (data) {
-                    if (data)
-                        return data;
-                },
-                function (err) {
-                    return $q.reject(err);
-                });
-        return _deleteTagPromise;
-
-    }
+    
+    //
+    // _deleteTag = function (id) {
+    //     var message = {
+    //         tagid: id
+    //     };
+    //     _deleteTagPromise =
+    //         $http.post('/delete_tag.json', message).then(function (data) {
+    //                 if (data)
+    //                     return data;
+    //             },
+    //             function (err) {
+    //                 return $q.reject(err);
+    //             });
+    //     return _deleteTagPromise;
+    //
+    // }
 
 
     _tagService = {
         _getData: _getData,
-        deleteTag: _deleteTag
+        // deleteTag: _deleteTag
     }
     return _tagService;
 }
@@ -68,16 +69,16 @@ Tags.controller('tagCtrl', ['$scope','$window', 'NgTableParams','tagService',
                     });
             });
 
-        $scope.deleteTag = function (id) {
-            console.log('--------------->', id);
-            tagService.deleteTag(id)
-                .then(function (res) {
-                    //reload
-                    console.log('--------------->', res);
-                    $scope.tableParams.reload();
-
-                });
-        }
+        // $scope.deleteTag = function (id) {
+        //     console.log('--------------->', id);
+        //     tagService.deleteTag(id)
+        //         .then(function (res) {
+        //             //reload
+        //             console.log('--------------->', res);
+        //             $scope.tableParams.reload();
+        //
+        //         });
+        // }
     }
 ]);
 

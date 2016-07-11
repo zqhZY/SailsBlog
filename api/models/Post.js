@@ -9,7 +9,31 @@ module.exports = {
 
   attributes: {
     
-    title : {type: 'string'}
+    title : {
+      type: 'string'
+    },
+
+    author: {
+      type: 'string'
+    },
+
+    imagePath: {
+
+      type: 'string'
+    },
+
+    detail: {
+      type: 'string'
+    },
+
+    Content: {
+
+      type: 'text'
+    },
+
+    createtime:{
+      type: 'string'
+    }
 
   }
 };

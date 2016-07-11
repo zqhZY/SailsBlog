@@ -1,0 +1,217 @@
+<div class="container" ng-app="Posts" ng-controller="PostCtrl">
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#admin-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="#">Example: SQLAlchemy</a>
+
+        </div>
+        <!-- navbar content -->
+        <div class="collapse navbar-collapse" id="admin-navbar-collapse">
+
+            <ul class="nav navbar-nav">
+
+                <li class="active">
+                    <a href="/admin_home">Home</a>
+                </li>
+                <li>
+                    <a href="/admin_user">User</a>
+                </li>
+                <li>
+                    <a href="/admin_posts">Post</a>
+                </li>
+                <li>
+                    <a href="/admin_category/">Category</a>
+                </li>
+                <li>
+                    <a href="/admin_tags">Tag</a>
+                </li>
+
+            </ul>
+
+
+
+            <ul class="nav navbar-nav navbar-right">
+
+
+
+            </ul>
+
+
+
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <ul class="nav nav-tabs actions-nav">
+        <li class="active">
+            <a href="javascript:void(0)">List (25)</a>
+        </li>
+
+
+        <li>
+            <a href="/post_create" title="Create new record">Create</a></li>
+
+
+
+        <li class="dropdown">
+
+            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+                Add Filter<b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu field-filters">
+
+                <li>
+                    <a href="javascript:void(0)" class="filter" onclick="return false;">User / First Name</a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0)" class="filter" onclick="return false;">User / Last Name</a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0)" class="filter" onclick="return false;">User / Username</a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0)" class="filter" onclick="return false;">User / Email</a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0)" class="filter" onclick="return false;">Post Title</a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0)" class="filter" onclick="return false;">Date</a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0)" class="filter" onclick="return false;">Tag / Name</a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0)" class="filter" onclick="return false;">Fixed Title</a>
+                </li>
+
+            </ul>
+
+        </li>
+
+
+
+        <li class="dropdown">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">With selected<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+
+                <li>
+                    <a href="javascript:void(0)" onclick="return modelActions.execute('delete');">Delete</a>
+                </li>
+
+            </ul>
+
+        </li>
+
+
+
+        <li>
+
+            <form method="GET" action="/sqla/simple/admin/post/" class="navbar-form navbar-left" role="search">
+
+
+
+                <div class="form-group">
+                    <input name="search" value="" class="col-md-2 form-control" placeholder="Search" type="text">
+                </div>
+
+            </form>
+
+        </li>
+
+    </ul>
+
+
+
+
+    <form id="filter_form" method="GET" action="/sqla/simple/admin/post/">
+        <div class="pull-right">
+            <button type="submit" class="btn btn-primary" style="display: none">Apply</button>
+
+        </div>
+
+        <table class="filters"></table>
+    </form>
+    <div class="clearfix"></div>
+
+    <div class="clearfix"></div>
+
+
+
+    <table ng-table="tableParams" class="table table-striped" show-filter="true">
+
+        <tbody>
+            <tr ng-repeat="post in $data">
+
+
+                <td>
+                    <input name="rowid" class="action-checkbox" value="1" title="Select record" type="checkbox">
+                </td>
+
+
+                <td class="list-buttons-column">
+
+
+                    <form class="icon" method="POST" action="/update_view.json">
+                        <input id="id" name="postid" value="{{post.id}}" type="hidden">
+                        <!--<input id="url" name="url" value="/sqla/simple/admin/tag/" type="hidden">-->
+
+                        <button type="submit">
+                            <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </form>
+
+
+                    <form class="icon" method="POST" action="/delete_post.json">
+                        <input id="id" name="postid" value="{{post.id}}" type="hidden">
+
+                        <button onclick="return confirm('Are you sure you want to delete this record?');" title="Delete record">
+                            <span class="fa fa-trash glyphicon glyphicon-trash"></span>
+                        </button>
+                    </form>
+                </td>
+
+                <td title="'Author'" filter="{ author: 'text'}" sortable="'author'">
+                    {{post.author}}
+                </td>
+                <td title="'Title'" filter="{ title: 'text'}" sortable="'title'">
+                    {{post.title}}
+                </td>
+                <td title="'Posttime'" filter="{ createtime: 'text'}" sortable="'createtime'">
+                    {{post.createtime}}
+                </td>
+
+
+            </tr>
+
+        </tbody>
+    </table>
+
+
+</div>
+
