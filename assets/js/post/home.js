@@ -2,7 +2,7 @@
  * Created by developer on 16-7-12.
  */
 
-var Home = angular.module('Home', []);
+var Home = angular.module('Home', ['ngSanitize']);
 
 Home.service('HomeService', ['$http', function ($http) {
 

@@ -20,6 +20,7 @@
     "bootstrap": "^3.3.6",
     "requirejs": "^2.2.0",
     "angular": "^1.5.7",
-    "ng-table": "^1.0.0"
+    "ng-table": "^1.0.0",
+    "angular-sanitize": "^1.5.7"
   }
 }

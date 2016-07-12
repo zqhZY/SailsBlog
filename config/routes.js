@@ -86,7 +86,8 @@ module.exports.routes = {
    *
    * blog post
    */
-  'get /content': {view: 'content/content'},
+  // 'get /content': {view: 'content/content'},
+  'get /content': 'PostController.showpost',
   
   
   

@@ -6,6 +6,7 @@
  */
 
 var markdown = require('markdown-js');
+var url = require('url');
 
 module.exports = {
 
@@ -55,6 +56,19 @@ module.exports = {
 
         });
         
+    },
+
+    showpost: function (req, res) {
+        var arg = url.parse(req.url, true).query;
+        var post_id = arg.id;
+        console.log('------>', post_id);
+
+        Post.find({id: post_id}).exec(function (err, post) {
+            if (err)
+                res.send(err);
+            else
+                res.view('content/content', {post: post});
+        });
     },
 
     delete: function (req, res) {

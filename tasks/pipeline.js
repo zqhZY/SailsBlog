@@ -38,6 +38,7 @@ var jsFilesToInject = [
   // 'bower_components/at-table/dist/angular-table.js',
   // 'bower_components/at-table/dist/angular-table.min.js',
   'bower_components/ng-table/dist/ng-table.min.js',
+  'bower_components/angular-sanitize/angular-sanitize.min.js',
   // // Load sails.io before everything else
   'js/dependencies/sails.io.js',
 
