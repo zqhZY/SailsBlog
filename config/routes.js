@@ -81,7 +81,12 @@ module.exports.routes = {
   'post  /update_post.json': 'PostController.update',
   'post /update_view.json': 'PostController.updateview',
 
-  
+
+  /**
+   *
+   * blog post
+   */
+  'get /content': {view: 'content/content'},
   
   
   
