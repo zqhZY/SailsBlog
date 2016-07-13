@@ -57,12 +57,12 @@
         <div class="det_text">
             <%- Post.Content%>
         </div>
-        <% })%>
+
 
 
         <ul class="links">
-            <li><i class="date"> </i><span class="icon_text">July 14, 2014</span></li>
-            <li><a href="#"><i class="admin"> </i><span class="icon_text">Admin</span></a></li>
+            <li><i class="date"> </i><span class="icon_text"><%= Post.createtime%></span></li>
+            <li><a href="#"><i class="admin"> </i><span class="icon_text"><%= Post.author%></span></a></li>
             <li class="last"><a href="#"><i class="permalink"> </i><span class="icon_text">Permalink</span></a></li>
         </ul>
         <ul class="links_middle">
@@ -74,6 +74,9 @@
             <li><i class="views"> </i><span class="icon_text">49</span></li>
             <li><i class="likes"> </i><span class="icon_text">12</span></li>
         </ul>
+
+        <% })%>
+
         <div class="comments1">
             <h4>COMMENTS</h4>
             <div class="comments-main">
@@ -96,6 +99,7 @@
                 <div class="clearfix"></div>
             </div>
         </div>
+
         <div class="lev">
             <div class="leave">
                 <h4>Leave a comment</h4>
