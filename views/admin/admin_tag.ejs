@@ -28,9 +28,6 @@
                     <a href="/admin_posts">Post</a>
                 </li>
                 <li>
-                    <a href="/admin_category/">Category</a>
-                </li>
-                <li>
                     <a href="/admin_tags">Tag</a>
                 </li>
 
@@ -83,11 +80,18 @@
                 </td>
 
 
+
+
                 <td class="list-buttons-column">
 
-                    <a class="icon" href="/sqla/simple/admin/tag/edit/?url=%2Fsqla%2Fsimple%2Fadmin%2Ftag%2F&amp;id=1" title="Edit record">
-                        <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
-                    </a>
+
+                    <form class="icon" method="POST" action="/updatetag_view.json">
+                        <input id="id" name="tagid" value="{{tag.id}}" type="hidden">
+                        <button type="submit">
+                            <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </form>
+
 
                     <form class="icon" method="POST" action="/delete_tag.json">
                         <input id="id" name="tagid" value="{{tag.id}}" type="hidden">

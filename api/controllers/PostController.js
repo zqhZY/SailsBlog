@@ -7,6 +7,7 @@
 
 var markdown = require('markdown-js');
 var url = require('url');
+var path = require('path');
 
 module.exports = {
 
@@ -21,25 +22,56 @@ module.exports = {
     create: function (req, res) {
 
         var content_md = markdown.makeHtml(req.body.Content);
-        // res.send(content_md);
-        var post = {
-            "title": req.body.title,
-            "author": req.body.author,
-            "imagePath": req.body.imagePath,
-            "detail": req.body.detail,
-            "Content": content_md,
-            "createtime": req.body.createtime
-        };
 
-        Post.create(post).exec(function(err){
-            if(err){
-                res.send(err);
-            }
-            else{
-                return res.redirect('/admin_posts');
-            }
+        var filename = req.file('imagePath');
+        filename.upload({
+            dirname: path.resolve(sails.config.appPath, 'assets/images')
+        },function (err, uploadedFiles) {
+            if (err) return res.negotiate(err);
 
-        })
+            var imagepath = path.relative(sails.config.appPath+'/assets', uploadedFiles[0].fd);
+
+            var post = {
+                "title": req.body.title,
+                "author": req.body.author,
+                "imagePath": imagepath,
+                "detail": req.body.detail,
+                "Content": content_md,
+                "createtime": req.body.createtime
+            };
+
+            console.log(post);
+
+            Post.create(post).exec(function(err){
+                if(err){
+                    res.send(err);
+                }
+                else{
+                    return res.redirect('/admin_posts');
+                }
+
+            })
+
+        });
+        // // res.send(content_md);
+        // var post = {
+        //     "title": req.body.title,
+        //     "author": req.body.author,
+        //     "imagePath": req.body.imagePath,
+        //     "detail": req.body.detail,
+        //     "Content": content_md,
+        //     "createtime": req.body.createtime
+        // };
+        //
+        // Post.create(post).exec(function(err){
+        //     if(err){
+        //         res.send(err);
+        //     }
+        //     else{
+        //         return res.redirect('/admin_posts');
+        //     }
+        //
+        // })
     },
     
     list: function (req, res) {

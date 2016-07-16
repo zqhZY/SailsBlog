@@ -69,6 +69,9 @@ module.exports.routes = {
   'post /tag_create': 'TagsController.create',
   'post /tags.json': 'TagsController.list',
   'post /delete_tag.json': 'TagsController.delete',
+  'post /updateTag_view.json': 'TagsController.updateview',
+  'post /update_tag.json': 'TagsController.update',
+
 
 
   //admin posts

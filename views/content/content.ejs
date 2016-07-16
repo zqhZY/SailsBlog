@@ -49,11 +49,13 @@
 <!-- header -->
 <div class="details">
     <div class="container">
-        <div class="det_pic">
-            <img src="images/img18.jpg" class="img-responsive" alt="">
-        </div>
 
         <% _.each(post, function (Post) { %>
+        <div class="det_pic">
+            <img src="<%= Post.imagePath%>" class="img-responsive" alt="">
+        </div>
+
+
         <div class="det_text">
             <%- Post.Content%>
         </div>

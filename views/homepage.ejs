@@ -76,10 +76,10 @@
 
             <div class="biographys" ng-repeat="post in PostList">
                 <div class="col-md-4 biography-info">
-                    <img src="images/img11.jpg" class="img-responsive" alt=""/>
+                    <img src="{{post.imagePath}}" class="img-responsive" alt=""/>
                 </div>
                 <div class="col-md-8 biography-into">
-                    <h4>Edie Campbell</h4>
+                    <h4>{{post.title}}</h4>
                     <!--{{post.Content}}-->
                     <div ng-bind-html="post.detail"></div>
                     <!--<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below ook It has survived not only five centuries, a galley of type and reproduced scrambled  survived not only five  it to make a type specimen book for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>-->

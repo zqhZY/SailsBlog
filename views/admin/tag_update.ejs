@@ -43,30 +43,36 @@
 
     <ul class="nav nav-tabs">
         <li>
-            <a href="/admin_tags">List</a>
-        </li>
-
-        <li class="active">
+            <a href="/sqla/simple/admin/tag/">List</a>
+        </li><li>
+        <a href="/sqla/simple/admin/tag/new/?url=%2Fsqla%2Fsimple%2Fadmin%2Ftag%2F">Create</a>
+    </li><li class="active">
         <a href="javascript:void(0)">Edit</a>
     </li></ul>
 
 
 
-    <form action="" method="POST" role="form" class="admin-form form-horizontal" enctype="multipart/form-data">
+    <form action="/update_tag.json" method="POST" role="form" class="admin-form form-horizontal" enctype="multipart/form-data">
         <hr>
+        <% _.each(updatetag, function (tag) { %>
+
         <div class="form-group">
             <label for="name" class="col-md-2 control-label">Tag Name
                 &nbsp;
             </label>
             <div class="col-md-10">
+                <input name="tagid" value="<%= tag.id %>" type="hidden">
 
-                <input class="form-control" id="name" name="tagname" type="text">
+                <input class="form-control" id="name" name="tagname" type="text"    
+                    value="<%= tag.tagname %>" >
 
             </div>
 
         </div>
 
+        <% }) %>
         <hr>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10 submit-row">
                 <input class="btn btn-primary" value="Save" type="submit">
