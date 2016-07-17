@@ -69,11 +69,15 @@
         </ul>
         <ul class="links_middle">
             <li><a href="#"><i class="title-icon"> </i><span class="icon_text">Lorem Ipsum Dolore</span></a></li>
-            <li><i class="tags"> </i><span class="icon_text">No tags</span></li>
+
+
+            <% _.each(relations, function (relation) { %>
+            <li><i class="tags"> </i><span class="icon_text"><%= relation.tagsname%></span></li>
+            <% })%>
         </ul>
         <ul class="links_bottom">
             <li><a href="#"><i class="comments"> </i><span class="icon_text">5 Comments</span></a></li>
-            <li><i class="views"> </i><span class="icon_text">49</span></li>
+            <li><i class="views"> </i><span class="icon_text"><%= Post.viewcount%></span></li>
             <li><i class="likes"> </i><span class="icon_text">12</span></li>
         </ul>
 

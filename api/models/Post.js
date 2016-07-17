@@ -33,6 +33,10 @@ module.exports = {
 
     createtime:{
       type: 'string'
+    },
+
+    viewcount:{
+      type: 'string'
     }
 
   }

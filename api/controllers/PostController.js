@@ -21,7 +21,7 @@ module.exports = {
     
     create: function (req, res) {
 
-        var content_md = markdown.makeHtml(req.body.Content);
+        // var content_md = markdown.makeHtml(req.body.Content);
 
         var filename = req.file('imagePath');
         filename.upload({
@@ -29,18 +29,38 @@ module.exports = {
         },function (err, uploadedFiles) {
             if (err) return res.negotiate(err);
 
-            var imagepath = path.relative(sails.config.appPath+'/assets', uploadedFiles[0].fd);
+            var imagepath = undefined
+            if (uploadedFiles[0].fd != undefined){
+                imagepath = path.relative(sails.config.appPath+'/assets', uploadedFiles[0].fd);
+            }
 
+            var init_count = 1;
             var post = {
                 "title": req.body.title,
                 "author": req.body.author,
+                "tags": req.body.tags,
                 "imagePath": imagepath,
                 "detail": req.body.detail,
-                "Content": content_md,
-                "createtime": req.body.createtime
+                "Content": req.body.Content,
+                "createtime": req.body.createtime,
+                "viewcount": init_count
             };
 
+            var relations = {
+                "postname": req.body.title,
+                "tagsname": req.body.tags
+            }
+
             console.log(post);
+
+            Relations.create(relations).exec(function(err){
+                if(err){
+                    res.send(err);
+                }
+                else{
+                    console.log('create relations successs!');
+                }
+            })
 
             Post.create(post).exec(function(err){
                 if(err){
@@ -53,25 +73,6 @@ module.exports = {
             })
 
         });
-        // // res.send(content_md);
-        // var post = {
-        //     "title": req.body.title,
-        //     "author": req.body.author,
-        //     "imagePath": req.body.imagePath,
-        //     "detail": req.body.detail,
-        //     "Content": content_md,
-        //     "createtime": req.body.createtime
-        // };
-        //
-        // Post.create(post).exec(function(err){
-        //     if(err){
-        //         res.send(err);
-        //     }
-        //     else{
-        //         return res.redirect('/admin_posts');
-        //     }
-        //
-        // })
     },
     
     list: function (req, res) {
@@ -98,8 +99,29 @@ module.exports = {
         Post.find({id: post_id}).exec(function (err, post) {
             if (err)
                 res.send(err);
-            else
-                res.view('content/content', {post: post});
+            else{
+                newcount = parseInt(post[0].viewcount) + 1;
+                Post.update({id: post_id}, {viewcount: newcount}).exec(function(err){
+
+                    if(err)
+                        res.send(err);
+                    else
+                        console.log('viewcount++');
+                })
+
+
+
+                Relations.find({postname: post[0].title}).exec(function(err, relations){
+
+                    if(err)
+                        res.send(err);
+                    else{
+                        console.log('relations------>', relations)
+                        res.view('content/content', {post: post, relations: relations});
+                    }
+                })
+                
+            }
         });
     },
 
